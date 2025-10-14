@@ -1,9 +1,9 @@
 # Chapter 2 Notes - Programming a Guessing Game
 
-# Variables
+## Variables
 
 ```rust
-let x = 5;      // Immutable by default
+let x = 5;      // Immutable by default, all inferred number are of type i32.
 let mut y = 6;  // `mut` keyword to make them mutable.
 
 let s = String::new("Hello");  // ::new is an associated function, not a method.
@@ -20,9 +20,44 @@ func(&mut y)
 // Interpolation can be inline, or in-tuple.
 println!("x = {x} and y + 2 = {}", y + 2);
 // Result: x = 5 and y + 2 = 12
+
+// Redefining a varible is called shadowing.
+let mut og = 8;
+let g: u32 = 7;
 ```
 
-# Installing Crates
+## Matching and Exceptions.
+
+Match blocks match on patterns, each possiblity is called an arm. Each arm defines the `Result` and and anon function to handle the result.
+
+```rust
+// ...
+match guess.cmp(&secret) {
+    Ordering::Less => println!("Too small."),
+    Ordering::Greater => println!("Too big"),
+    Ordering::Equal => {
+        println!("Correct");
+        break;
+    }
+}
+```
+
+Matching is how exception handling is done.
+
+```rust
+// ... loop
+    let guess: u32 = match guess.trim().parse() {
+        Ok(n) => n,  // In case of Result.Ok, return value.
+        // In case of Result.Err, handle
+        Err(_) => {  // _ is a catch-all for any error type.
+            println!("Not a number, try again.");
+            continue; // Start loop over again.
+        }
+    };
+```
+
+
+## Installing Crates
 
 Add deps to `Cargo.toml:[dependencies]`, semver applies.
 `Cargo.lock` works like lockfiles do for any other lang.
