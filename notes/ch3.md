@@ -26,7 +26,7 @@ println!("{x}");  // Will print 6, the current shadow in scope.
 
 Scalars are types which represent a single value. Four primary scalars: integers, floating-points, booleans, and characters.
 
-Intergers are default `i32`, When an integer overflow, it wraps around. If a `u8` value is 257, it's 1, and so on.
+Intergers are default `i32`, When an integer overflows, it wraps around. If a `u8` value is 257, it's 1, and so on.
 
 Floats default to `f64`.
 
@@ -40,7 +40,7 @@ Tuples are fixed length, multi-type variables: `let tup: (u32, f4) = (400, 40.0)
 Tuples use dot-notation for access: `tup.0` for 400.
 `()` is a special tuple called the *unit*, a valueless tuple, which is returned by expressions automatically if they do not return something.
 
-Arrays are fixed length, of a single type: `let a = [1, 2, 3];`. They are allocated on the stack, not the heap. Arrays use dot access: `a[0]` for 1. Out of bounds array access will result in runtime error.
+Arrays are fixed length, of a single type: `let a = [1, 2, 3];`. They are allocated on the stack, not the heap. Arrays use bracket access: `a[0]` for 1. Out of bounds array access will result in runtime error.
 
 ## 3.3 - Functions
 
